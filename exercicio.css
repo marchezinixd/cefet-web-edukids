@@ -1,7 +1,10 @@
 /* Exercício 1: Criar uma transição para quando o mouse estiver em cima dos
  * botões play/stop (para que o elemento se revele lentamente)
  */
- #controles ul {}
+ #controles ul {
+  transition: transform  800ms ease-out;
+
+ }
 
 /*
  * Exercício 2: Você deve implementar uma metáfora visual para cada um dos 4
@@ -11,18 +14,45 @@
  *   - perturbado: animal fica pulsando
  *   - instinto-selvagem: animal dá um salto e cresce, com uma borda vermelha
  */
-.agitado {}
-.agitado img {}
+.agitado {
+animation: piscando 0.5s ease-in-out 0s infinite alternate;
 
-.alimentado {}
-.alimentado img {}
+}
+@keyframes piscando{
+  from {opacity: 1;}
+  to {opacity: 0.5;}
 
-.perturbado {}
-.perturbado img {}
+}
 
-.instinto-selvagem {}
-.instinto-selvagem img {}
+.agitado img {  }
 
+.alimentado {animation: girandoprumlado 0.5s ease-in-out 0s infinite ;}
+.alimentado img {background-color: green; transition: background-color 600ms linear;}
+@keyframes girandoprumlado{
+  from {transform: rotate(0deg);}
+  to {transform: rotate(720deg);}
+
+}
+
+
+.perturbado {
+transition: transform 300ms linear}
+.perturbado img {animation: flutuando 0.2s ease-in-out 0s infinite alternate;}
+@keyframes flutuando{
+  from {transform: scale(1,1);}
+  to {transform: scale(1.5,1.5);}
+
+}
+
+.instinto-selvagem {animation: pulando 0.2s ease-in-out 0s infinite alternate;
+
+}
+.instinto-selvagem img {background-color: red; transition: background-color 600ms linear;}
+@keyframes pulando {
+  from {transform: scale(1,1) translate(0px,0px); }
+  to {transform: scale(1.5,1.5) translate(0px,40px);}
+
+}
 /*
  * Exercício 3: Criar uma imagem sprite com as imagens dos botões de controle
  * (icone-comecar.png e icone-parar.png). Sugestões:
@@ -34,6 +64,12 @@
 .comecar,
 .parar {}
 
-.comecar {}
+.comecar {width: 24px;
+  height: 24px;
+  background-image: url('imgs/sprite-controles.png');
+background-position: 24px 0; }
 
-.parar {}
+.parar {width: 24px;
+  height: 24px;
+  background-image: url('imgs/sprite-controles.png');
+background-position: 0 0; }
